@@ -10,7 +10,6 @@ import 'core-js/modules/es6.object.assign';
 import 'core-js/modules/es7.object.values';
 
 window.ShopifyBuy = window.ShopifyBuy || ShopifyBuy;
-
 ShopifyBuy.UI = window.ShopifyBuy.UI || {
   domains: {},
 

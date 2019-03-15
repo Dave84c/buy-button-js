@@ -80,6 +80,7 @@ export default class Product extends Component {
     this.selectedVariant = {};
     this.selectedOptions = {};
     this.selectedImage = null;
+    this.customProperties = {};
     this.updater = new ProductUpdater(this);
     this.view = new ProductView(this);
   }
@@ -308,6 +309,7 @@ export default class Product extends Component {
       [`click ${this.selectors.product.quantityInput}`]: this.stopPropagation.bind(this),
       [`click ${this.selectors.product.quantityButton}`]: this.stopPropagation.bind(this),
       [`change ${this.selectors.option.select}`]: this.onOptionSelect.bind(this),
+      [`change ${this.selectors.product.productNote}`]: this.onNoteChange.bind(this),
       [`click ${this.selectors.product.button}`]: this.onButtonClick.bind(this),
       [`click ${this.selectors.product.blockButton}`]: this.onButtonClick.bind(this),
       [`keyup ${this.selectors.product.blockButton}`]: this.onBlockButtonKeyup.bind(this),
@@ -581,6 +583,10 @@ export default class Product extends Component {
     });
   }
 
+  getCustomProperties() {
+    return Object.entries(this.customProperties).map(([key, value]) => ({key,value})); ;
+  }
+
   onButtonClick(evt, target) {
     evt.stopPropagation();
     if (isFunction(this.options.buttonDestination)) {
@@ -588,7 +594,9 @@ export default class Product extends Component {
     } else if (this.options.buttonDestination === 'cart') {
       this.props.closeModal();
       this._userEvent('addVariantToCart');
-      this.props.tracker.trackMethod(this.cart.addVariantToCart.bind(this), 'Update Cart', this.selectedVariantTrackingInfo)(this.selectedVariant, this.selectedQuantity);
+      //get labels for key and read value
+      let customProperties = this.getCustomProperties();
+      this.props.tracker.trackMethod(this.cart.addVariantToCart.bind(this), 'Update Cart', this.selectedVariantTrackingInfo)(this.selectedVariant, this.selectedQuantity,true,customProperties);
       if (this.iframe) {
         this.props.setActiveEl(target);
       }
@@ -629,6 +637,11 @@ export default class Product extends Component {
     const value = target.options[target.selectedIndex].value;
     const name = target.getAttribute('name');
     this.updateVariant(name, value);
+  }
+
+  onNoteChange(evt) {
+    const target = evt.target;
+    this.customProperties[evt.target.getAttribute('data-propertyName')] = evt.target.value;
   }
 
   onQuantityBlur(evt, target) {
