@@ -583,7 +583,17 @@ export default class Product extends Component {
     });
   }
 
-  getCustomProperties() {
+  fillCustomProperties(target){
+    target.closest("body").querySelectorAll(this.selectors.product.productNote).forEach(element => {
+      this.customProperties[element.getAttribute('data-propertyName')] = element.value;
+    });
+
+    /*var event = new Event('submit');  // (*)
+    elem.dispatchEvent(event);*/
+  }
+
+  getCustomProperties(target) {
+    this.fillCustomProperties(target);
     return Object.entries(this.customProperties).map(([key, value]) => ({key,value})); ;
   }
 
@@ -595,7 +605,7 @@ export default class Product extends Component {
       this.props.closeModal();
       this._userEvent('addVariantToCart');
       //get labels for key and read value
-      let customProperties = this.getCustomProperties();
+      let customProperties = this.getCustomProperties(target);
       this.props.tracker.trackMethod(this.cart.addVariantToCart.bind(this), 'Update Cart', this.selectedVariantTrackingInfo)(this.selectedVariant, this.selectedQuantity,true,customProperties);
       if (this.iframe) {
         this.props.setActiveEl(target);
@@ -783,6 +793,7 @@ export default class Product extends Component {
       acc[option.name] = option.value;
       return acc;
     }, {});
+
     this.selectedVariant = selectedVariant;
     return model;
   }

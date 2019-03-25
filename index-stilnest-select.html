@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BuyButton.js</title>
+  </head>
+  <body>
+    <script src="tmp/buybutton.dev.js"></script>
+
+    <div id='product-component-1963770642529'></div>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+
+    (function () {
+      var scriptURL = 'tmp/buybutton.dev.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
+        } else {
+          loadScript();
+        }
+      } else {
+        loadScript();
+      }
+
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'int.stilnest.com',
+          storefrontAccessToken: 'c2f5ec0b14d0727499035c859b3a270e',
+        });
+
+        var ui = ShopifyBuy.UI.init(client);
+      ui.createComponent('product', {
+            id: [1963770642529],
+            node: document.getElementById('product-component-1963770642529'),
+            moneyFormat: '%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D',
+            options: {
+  "product": {
+    "variantId": "all",
+    "width": "100%",
+    "layout": "vertical",
+    "contents": {
+      "img": false,
+      "imgWithCarousel": false,
+      "title": false,
+      "variantTitle": false,
+      "price": true,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false,
+      "note": true,
+    },
+    "templates": {
+              "note": '<div><label for="product_note" class="{{data.classes.product.productNoteLabel}}">Engraving</label><select data-propertyName="Engraving" id="product_note" data-element="product.noteInput" class="{{data.classes.product.productNote}}"><option value="1">1</option><option value="2">2</option></select></div><div><label for="product_note2" class="{{data.classes.product.productNoteLabel}}">Engraving2</label><select data-propertyName="SecondProperty" id="product_note2" data-element="product.noteInput" class="{{data.classes.product.productNote}}"><option value="1">1</option><option value="2">2</option></select></div>'
+            },
+      order: [
+        'price',
+        'note',
+        'button',
+      ],
+    "text": {
+      "button": "Add to cart",
+    },
+    "styles": {
+      "product": {
+        "text-align": "left",
+      },
+      "productNote": {
+                'margin-left': '10px',
+                'margin-bottom': '10px'
+              },
+      "button": {
+        "background-color": "black",
+        "font-family": "Museo Sans, Open Sans, sans-serif",
+        "font-size": "14px",
+        "font-weight": "100",
+        "color": "#FFFFFF",
+        "padding-top": "15px",
+        "padding-bottom": "15px",
+        "padding-left": "px",
+        "padding-right": "px",
+        "text-transform":"uppercase",
+        "letter-spacing":"2px",
+        "border-radius": "0px",
+        ":focus": {
+          "background-color": "#000000"
+        },
+        ":hover": {
+          "background-color": "#000000"
+        },
+      },
+      "price": {
+        "font-family": "Museo Sans, Open Sans, sans-serif",
+        "font-weight": "100",
+        "font-size": "14px",
+        "text-transform":"uppercase",
+        "color":"#A9A9A9",
+      },
+    },
+    "googleFonts": [
+      "Open Sans",
+    ]
+  },
+  "cart": {
+    "popup": false,
+    "text": {
+  		"title": "Cart",
+  		"empty": "Your cart is empty.",
+  		"button": "Checkout",
+  		"total": "Total",
+ 			"notice": "Shipping costs and discounts will be calculated at checkout.",
+		},
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "background-color": "transparent",
+        "border":"1px solid #000000",
+        "color":"black",
+        "font-family": "Museo Sans, Open Sans, sans-serif",
+        "font-size": "14px",
+        "padding-top": "15px",
+        "padding-bottom": "15px",
+        "text-transform":"uppercase",
+        "letter-spacing":"3px",
+        "border-radius": "0px",
+        ":hover": {
+          "background-color": "transparent",
+        },
+        "border-radius": "0px",
+        ":focus": {
+          "background-color": "transparent",
+        },
+        "font-weight": "100"
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
+    },
+    "googleFonts": [
+      "Open Sans"
+    ]
+  },
+
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "font-family": "Museo Sans, Open Sans, sans-serif",
+        "background-color": "#000000",
+        "font-weight": "100",
+        "border-radius":"0px",
+        "padding-top":"10px",
+        "padding-bottom":"10px",
+        ":hover": {
+          "background-color": "#000000"
+        },
+        ":focus": {
+          "background-color": "#000000"
+        },
+        "font-weight": "normal"
+      },
+      "count": {
+        "font-size": "14px"
+      }
+    },
+    "googleFonts": [
+      "Open Sans"
+    ]
+  },
+  "option": {
+    "styles": {
+    	"wrapper": {
+        "border": "0px",
+        "border-radius":"0",
+        "width":"330px",
+      },
+      "label":{
+        "display": "none",
+      },
+      "select": {
+        "background-color": "transparent",
+        "font-family": "Museo Sans, Open Sans, sans-serif",
+        "font-size": "14px",
+        "font-weight": "100",
+        "color": "#A9A9A9",
+        "padding-top": "15px",
+        "padding-bottom": "15px",
+        "padding-left": "15px",
+        "padding-right": "15px",
+        "border": "1px solid #A9A9A9",
+        "text-transform":"uppercase",
+        "letter-spacing":"2px",
+        "border-radius": "0px",
+        "cursor":"pointer",
+        "width":"330px",
+      },
+      "selectIcon": {
+        "margin-right":"5px",
+      },
+    },
+    "googleFonts": [
+      "Open Sans",
+    ]
+  },
+  "lineItem" : {
+            "contents": {
+              "notes": true,
+              },
+            "templates":{
+              "notes":'{{#data.customAttributes}}<div class="{{data.classes.lineItem.notes}}"><small>{{key}} {{value}}</small></div>{{/data.customAttributes}}',
+            },
+            "classes": {
+              "notes": 'lineItem-notes',
+            },
+            "styles":{
+              "notes":{
+                'clear':'both',
+                'margin-top': '10px',
+              }
+            },
+            "order": [
+            'image',
+            'variantTitle',
+            'title',
+            'price',
+            'quantity',
+            'notes',
+          ],
+        },
+}
+          });
+   
+      }
+    })();
+    /*]]>*/
+    </script>
+  </body>
+</html>
